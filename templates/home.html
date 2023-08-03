@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row">
+    <div class="column side">
+    </div>
+    <div class="column middle">
+        Welcome!! Nice Meeting you {{last_name}}, {{first_name}}!
+        <p><b>Auth Details</b></p>
+        <table>
+            <tr>
+                <td>First Name:</td>
+                <td>{{first_name}}</td>
+            </tr>
+            <tr>
+                <td>Last Name:</td>
+                <td>{{last_name}}</td>
+            </tr>
+            <tr>
+                <td>User Name:</td>
+                <td>{{user_name}}</td>
+                </tr>
+            <tr>
+                <td>Email</td>
+                <td>{{email}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+{% include "content.html" %}
+{% endblock %}

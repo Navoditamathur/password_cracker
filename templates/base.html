@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Information Security & Privacy: {{title}}</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css')}}">
+    {% block head %}
+    {% endblock %}
+</head>
+<body>
+
+<div class="header">
+  <h1>Information Security & Privacy</h1>
+</div>
+
+<div class="topnav">
+  <div class="search-container">
+      {% if authenticated %}
+      <a href="{{ url_for('auth.validate_password') }}">Validate My Password</a>
+      <a href="{{ url_for('auth.logout') }}">Logout</a>
+      {% else %}
+      <a href="{{ url_for('auth.sign_up') }}">Sign Up</a>
+      <a href="{{ url_for('auth.login') }}">Login</a>
+      {% endif %}
+      <a href="{{ url_for('auth.crack_password') }}">Crack Password</a>
+  </div>
+</div>
+
+{% for error in error_msgs %}
+<span style="color:red;">{{error}}</span><br/>
+{% endfor %}
+
+{% for msg in get_flashed_messages() %}
+      <span style="color:red;">{{msg}}</span><br/>
+{% endfor %}
+
+{% block content %}
+{% endblock %}
+
+</body>
+</html>
